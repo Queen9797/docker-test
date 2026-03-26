@@ -1,0 +1,17 @@
+# Image בסיס
+FROM python:3.12-slim
+
+# קביעת תיקיית עבודה בתוך הקונטיינר
+WORKDIR /app
+
+# העתקת קובץ התלויות והתקנת הספריות
+COPY requirements.txt /app/
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# העתקת כל הקבצים של האפליקציה
+COPY . .  /app/
+
+
+# פקודת הרצה
+CMD ["python", "app.py"]
